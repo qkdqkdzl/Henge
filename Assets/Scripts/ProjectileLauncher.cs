@@ -8,7 +8,7 @@ public class ProjectileLauncher : MonoBehaviour
     public int IinePoints;
 
 
-    //[Header("-------Tragectory--------")]
+    [Header("-------Tragectory--------")]
     public LineRenderer lineRenderer;
 
 
