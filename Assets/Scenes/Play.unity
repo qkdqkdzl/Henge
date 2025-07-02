@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 78010895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.68000007, z: 0}
+  m_LocalPosition: {x: 0.501, y: 0.833, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,6 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSo: {fileID: 11400000, guid: f2b063d3813ba024c80d72d52e12dc8c, type: 2}
   myUI: {fileID: 788464556}
+  launchingPad: {fileID: 312706389}
+  myProjectileLauncher: {fileID: 1278318621}
 --- !u!1 &312706388
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,11 +210,9 @@ GameObject:
   - component: {fileID: 312706389}
   - component: {fileID: 312706392}
   - component: {fileID: 312706391}
-  - component: {fileID: 312706390}
   - component: {fileID: 312706393}
-  - component: {fileID: 312706394}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: launchingPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,37 +226,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312706388}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.37514716, w: 0.9269653}
   m_LocalPosition: {x: -1.79, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 78010896}
   m_Father: {fileID: 1236144827}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &312706390
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312706388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -44.067}
 --- !u!23 &312706391
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -322,30 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af576782de531e4a98dfa7b8ac46070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
---- !u!136 &312706394
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312706388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &370603460
 GameObject:
   m_ObjectHideFlags: 0

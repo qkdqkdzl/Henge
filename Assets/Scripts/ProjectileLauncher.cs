@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
@@ -6,6 +7,7 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject progectie;
     public float Speed = 10f;
     public int IinePoints;
+    
 
 
     [Header("-------Tragectory--------")]
@@ -24,11 +26,7 @@ public class ProjectileLauncher : MonoBehaviour
             else
                 lineRenderer.enabled = false;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            var _projectile = Instantiate(progectie, IaunchPoint.position, IaunchPoint.rotation);
-            _projectile.GetComponent<Rigidbody>().linearVelocity = Speed * IaunchPoint.up;
-        }
+       
     }
     void DrawTrajectory()
     {
@@ -39,6 +37,13 @@ public class ProjectileLauncher : MonoBehaviour
         {
             var x = (startVelocity.x * time) + (Physics.gravity.x / 2 * time * time);
             var y = (startVelocity.x * time) + (Physics.gravity.x / 2 * time * time);
+            
         }
+    }
+
+    public  void ThrowStone()
+    {
+        var _projectile = Instantiate(progectie, IaunchPoint.position, IaunchPoint.rotation);
+        _projectile.GetComponent<Rigidbody>().linearVelocity = Speed * IaunchPoint.up;
     }
 }
