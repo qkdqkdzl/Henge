@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - CinemachineTarget
+  - Low
+  - Middle
+  - High
+  - palyer
+  - Stone
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,8 @@ TagManager:
   - 
   - PostProcessing
   - Not in Reflection
-  - 
-  - 
+  - Zombi
+  - Target
   - 
   - 
   - 

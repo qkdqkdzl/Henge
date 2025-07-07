@@ -12,29 +12,34 @@ public class MainUI : MonoBehaviour
     private VisualElement root;
     private Button throwBtn;
     Slider angleSlider;
+    Slider massSlider;
+    Slider speedSlider;
 
     private void Awake()
     {
         root = myUI.rootVisualElement;
+
         throwBtn = root.Q<Button>("ThrowBtn");
+
+        massSlider = root.Q<Slider>("massSlider");
+        speedSlider = root.Q<Slider>("speedSlider");
         angleSlider = root.Q<Slider>("angleSlider");
-
-
-        
-
     }
 
     private void Start()
     {
         throwBtn.clicked += OnThrowButtonClicked;
-        angleSlider.value = launchingPad.transform.rotation.z;
+
+        
+        angleSlider.value = launchingPad.transform.rotation.eulerAngles.z;
+
         angleSlider.RegisterValueChangedCallback(evt =>
         {
-            Debug.Log("aaaaa");
             float angle = evt.newValue;
             launchingPad.transform.rotation = Quaternion.Euler(0, 0, angle);
         });
 
+        
     }
 
     private void OnThrowButtonClicked()
