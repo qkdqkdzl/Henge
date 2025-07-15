@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
@@ -7,18 +8,20 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject progectie;
     public float Speed = 10f;
     public int IinePoints;
-    
+
+
+    public bool isDrawing = false;
 
 
     [Header("-------Tragectory--------")]
     public LineRenderer lineRenderer;
-
+    
 
     void Update()
     {
         if (lineRenderer != null)
         {
-            if (Input.GetMouseButton(1))
+            if (isDrawing)
             {
                 DrawTrajectory();
                 lineRenderer.enabled = true;
@@ -46,4 +49,6 @@ public class ProjectileLauncher : MonoBehaviour
         var _projectile = Instantiate(progectie, IaunchPoint.position, IaunchPoint.rotation);
         _projectile.GetComponent<Rigidbody>().linearVelocity = Speed * IaunchPoint.up;
     }
+
+    
 }

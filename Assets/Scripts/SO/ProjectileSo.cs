@@ -8,5 +8,9 @@ public class ProjectileSo : ScriptableObject
 {
     public float Mass;
     public float Speed;
-    public float Angel;
+    public float AngleY;
+    public float AngleZ;
+
+
+
 }
