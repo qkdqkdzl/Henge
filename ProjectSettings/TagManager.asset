@@ -10,6 +10,8 @@ TagManager:
   - palyer
   - Stone
   - Target
+  - Ground
+  - Zombi
   layers:
   - Default
   - TransparentFX

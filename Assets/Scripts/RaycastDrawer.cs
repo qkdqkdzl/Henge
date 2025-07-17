@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class RaycastDrawer : MonoBehaviour
 {
+    public static event Action OnRayCastHitZombiEvent;
     void Update()
     {
         Vector3 origin = transform.position;

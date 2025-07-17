@@ -23,6 +23,11 @@ public class MyMainUI : MonoBehaviour
     Slider speedSlider;
     Slider massSlider;   
 
+    public void OnRayCastHitZombiEventHandler()
+    {
+
+    }
+
     private void Awake()
     {
         root = _document.rootVisualElement;
@@ -75,7 +80,7 @@ public class MyMainUI : MonoBehaviour
 
     
 
-    private void TargetStone_OnKnockDownEvent(StoneType obj)
+    public void TargetStone_OnKnockDownEvent(StoneType obj)
     {
         List<string> list = new List<string>();
         list.Add("OK");
@@ -184,9 +189,13 @@ public class MyMainUI : MonoBehaviour
         myProjectileLauncher.ThrowStone();        
         container.visible = false;
     }
-    private void FlyingStone_OnMissionComplete()
+    public void FlyingStone_OnMissionComplete()
     {
         container.visible = true;
+    }
+    public void OnStageClearEvent()
+    {
+
     }
     void LockButtonAndSlider()
     {

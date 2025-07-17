@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class TargetStone : MonoBehaviour
 {
     public static event Action<StoneType> OnHitByProjectile;
     public static event Action<StoneType> OnKnockDownEvent;
+    public static event Action<Vector3> OnKnockDownToZombiEvent;
     public StoneType stoneType;
     public Renderer objRenderer;
 
@@ -20,9 +22,7 @@ public class TargetStone : MonoBehaviour
 
     private void Start()
     {
-
         originalColor = objRenderer.material.color;
-
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,9 +38,9 @@ public class TargetStone : MonoBehaviour
         if (isHit)
         {
 
-            if (Mathf.Abs(transform.eulerAngles.z) == 270 || Mathf.Abs(transform.eulerAngles.z) == 90)
+            if ((Math.Abs(transform.eulerAngles.z - 270) < 3f) || Math.Abs(transform.eulerAngles.z - 90f) < 3)
             {
-                OnKnockDownEvent?.Invoke(stoneType);
+                OnKnockDownToZombiEvent?.Invoke(transform.position);
                 StartCoroutine(FadeOutObject());
                 isHit = false;
             }
@@ -60,9 +60,10 @@ public class TargetStone : MonoBehaviour
         }
         Color finalColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         objRenderer.material.color = finalColor;
-        yield return new WaitForSeconds(1);
-
+        yield return new WaitForSeconds(0.5f);
+        OnKnockDownEvent?.Invoke(stoneType);
         Destroy(gameObject);
     }
- }
 
+
+}
