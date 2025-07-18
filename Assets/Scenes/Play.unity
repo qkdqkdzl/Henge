@@ -935,6 +935,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1278318620}
   - component: {fileID: 1278318621}
+  - component: {fileID: 1278318622}
+  - component: {fileID: 1278318624}
+  - component: {fileID: 1278318623}
   m_Layer: 0
   m_Name: ProjectileLauncher
   m_TagString: Untagged
@@ -954,7 +957,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1466391246}
   m_Father: {fileID: 1762120999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1278318621
@@ -970,11 +974,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IaunchPoint: {fileID: 78010896}
-  progectie: {fileID: 4688579126413104173, guid: 721d374b74a28de449a044337604342b, type: 3}
+  progectie: {fileID: 4843524868254211946, guid: 0b7c39db641be5044ab85ba9f56a629a, type: 3}
   Speed: 10
   IinePoints: 10
   isDrawing: 0
   lineRenderer: {fileID: 1959028769}
+--- !u!54 &1278318622
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278318619}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1278318623
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278318619}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!65 &1278318624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278318619}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1349690546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiPrefab: {fileID: 114225196532988843, guid: 6085b1742cb26e24288aee7278b83421, type: 3}
   startPoint: {fileID: 1349690548}
-  zombiCount: 50
+  zombiCount: 0
   spacing: 2
   radius: 2
   targetLayer:
@@ -1089,7 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d989a7611e7cf584b8a7aba4e81d3d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stonePrefab: {fileID: 207047973523438060, guid: 8b97976cb9731554d9e3b47f4a2dbc6a, type: 3}
+  stonePrefab: {fileID: 1418860561918544383, guid: 21440718d3f07344e841a649af5745d8, type: 3}
   minX: 11
   maxX: 20
   minZ: -5
@@ -1125,7 +1199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1762120999}
+  m_Father: {fileID: 1278318620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1466391247
 MonoBehaviour:
@@ -1204,7 +1278,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1278318620}
-  - {fileID: 1466391246}
   - {fileID: 1393451341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
