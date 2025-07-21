@@ -8,6 +8,7 @@ public class TargetStoneManager : MonoBehaviour
     public float minX, maxX;
     public float minZ, maxZ;
     [SerializeField] int count = default(int);
+    [SerializeField] QuadCreator quadCreator;
 
     Vector3 scale = new Vector3(3f, 3, 3);
     Vector3 pos;
@@ -43,9 +44,8 @@ public class TargetStoneManager : MonoBehaviour
     public void CreateOneTargeStone()
     {
         //range 
-        pos.x = UnityEngine.Random.Range(minX, maxX);
-        pos.z = UnityEngine.Random.Range(minZ, maxZ);
-        pos.y = 3;
+        pos = quadCreator.GetArea();
+        pos.y = 0.1f;        
 
         //size
         stonePrefab.transform.localScale = scale;
