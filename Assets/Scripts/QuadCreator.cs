@@ -77,20 +77,18 @@ public class QuadCreator : MonoBehaviour
             new Vector2(1, 0),
             new Vector2(0, 1),
             new Vector2(1, 1)
-        };
-
+        };     
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.normals = normals;
         mesh.uv = uv;
 
-        meshFilter.mesh = mesh;
-        quad.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        //meshFilter.mesh = mesh;
+        //quad.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 
-        width += 1f;
-        height += 1f;
-        position.x += 0.5f;
-
+        //width += 1f;
+        //height += 1f;
+        //position.x += 0.5f;
     }
 
     public Vector3 GetArea()

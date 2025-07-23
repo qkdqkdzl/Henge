@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    public Transform IaunchPoint;
+    public Transform launchPoint;
     public GameObject progectie;
     public float Speed = 10f;
     public int IinePoints;
+
+    public CameraFollow cameraFollow;
+    public GameObject projectile;
+    public ProjectileSo projectileSo;
 
 
     public bool isDrawing = false;
@@ -19,6 +23,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     void Update()
     {
+        
         if (lineRenderer != null)
         {
             if (isDrawing)
@@ -33,8 +38,8 @@ public class ProjectileLauncher : MonoBehaviour
     }
     void DrawTrajectory()
     {
-        Vector3 origin = IaunchPoint.position;
-        Vector3 startVelocity = Speed * IaunchPoint.up;
+        Vector3 origin = launchPoint.position;
+        Vector3 startVelocity = Speed * launchPoint.up;
         float time = 0;
         for (int i = 0; i < IinePoints; i++)
         {
@@ -46,8 +51,15 @@ public class ProjectileLauncher : MonoBehaviour
 
     public  void ThrowStone()
     {
-        var _projectile = Instantiate(progectie, IaunchPoint.position, IaunchPoint.rotation);
-        _projectile.GetComponent<Rigidbody>().linearVelocity = Speed * IaunchPoint.up;
+        lineRenderer.enabled = false;
+        Quaternion rot = launchPoint.rotation;
+        rot.x = projectileSo.AngleX;
+        rot.y = projectileSo.AngleY;
+        rot.z = projectileSo.AngleZ;
+        var _projectile = Instantiate(progectie, launchPoint.position, launchPoint.rotation);
+        _projectile.GetComponent<Rigidbody>().linearVelocity = Speed * launchPoint.up;
+        cameraFollow.SetTarget(_projectile.transform);
+        
     }
 
     
