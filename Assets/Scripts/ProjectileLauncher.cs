@@ -12,6 +12,9 @@ public class ProjectileLauncher : MonoBehaviour
     public CameraFollow cameraFollow;
     public GameObject projectile;
     public ProjectileSo projectileSo;
+    public CannonShake cannonShake;
+    public ParticleSystem particleSystem;
+
 
 
     public bool isDrawing = false;
@@ -23,7 +26,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     void Update()
     {
-        
+        particleSystem.Stop();
         if (lineRenderer != null)
         {
             if (isDrawing)
@@ -38,6 +41,7 @@ public class ProjectileLauncher : MonoBehaviour
     }
     void DrawTrajectory()
     {
+        
         Vector3 origin = launchPoint.position;
         Vector3 startVelocity = Speed * launchPoint.up;
         float time = 0;
@@ -51,6 +55,10 @@ public class ProjectileLauncher : MonoBehaviour
 
     public  void ThrowStone()
     {
+        cannonShake.Fire();
+        particleSystem.Play();
+
+
         lineRenderer.enabled = false;
         Quaternion rot = launchPoint.rotation;
         rot.x = projectileSo.AngleX;

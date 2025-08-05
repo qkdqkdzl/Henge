@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 public class MyMainUI : MonoBehaviour
 {
-    
+    [SerializeField] Transform Barrel;
+    [SerializeField] Transform Cannon;
     [SerializeField] UIDocument _document;
     [SerializeField] StyleSheet _styleSheet;
     [SerializeField] ProjectileLauncher myProjectileLauncher;
@@ -15,14 +16,9 @@ public class MyMainUI : MonoBehaviour
     public ProjectileSo projectileSO;
     VisualElement root;
     VisualElement container;
-    Button throwBtn;
-    Button drawBtn;
-    Button quitBtn;   
-    Slider YSlider;
-    Slider ZSlider;
-    Slider speedSlider;
-    Slider massSlider;   
-
+    Button throwBtn, drawBtn, quitBtn;         
+    Slider sliderBarrel, sliderCannon, speedSlider, massSlider;
+      
     public void OnRayCastHitZombiEventHandler()
     {
 
@@ -41,17 +37,12 @@ public class MyMainUI : MonoBehaviour
         throwBtn.text = "Throw";
         drawBtn.text = "Draw";
         quitBtn.text = "Quit";
-       
-        YSlider = UTIL.Create<Slider>("my-slider");
-        ZSlider = UTIL.Create<Slider>("my-slider");
+
+        sliderBarrel = UTIL.Create<Slider>("my-slider");
+        sliderCannon = UTIL.Create<Slider>("my-slider");
         massSlider = UTIL.Create<Slider>("my-slider");
-        speedSlider = UTIL.Create<Slider>("my-slider");           
-
-        //speedSlider.AddToClassList("slider-label");
-        //massSlider.AddToClassList("slider-label");
-        //YSlider.AddToClassList("slider-label");
-        //ZSlider.AddToClassList("slider-label");
-
+        speedSlider = UTIL.Create<Slider>("my-slider");       
+                
         VisualElement buttonContainer = UTIL.Create<VisualElement>("head-box");
 
         buttonContainer.Add(throwBtn);
@@ -59,14 +50,12 @@ public class MyMainUI : MonoBehaviour
         buttonContainer.Add(quitBtn);
 
         container.Add(buttonContainer);
-
        
-        container.Add(YSlider);
-        container.Add(ZSlider);
+        container.Add(sliderBarrel);
+        container.Add(sliderCannon);
         container.Add(massSlider);
         container.Add(speedSlider);
         root.Add(container);
-
     }
 
     private void Start()
@@ -76,9 +65,7 @@ public class MyMainUI : MonoBehaviour
 
         Initialize();
         AddListener();
-    }
-
-    
+    } 
 
     public void TargetStone_OnKnockDownEvent(StoneType obj)
     {
@@ -99,19 +86,14 @@ public class MyMainUI : MonoBehaviour
     }
 
     private void Initialize()
-    {       
-        YSlider.lowValue = -90f;
-        YSlider.highValue = 90f;
-        ZSlider.lowValue = -90f;
-        ZSlider.highValue = 90f;
-        speedSlider.lowValue = 0;
-        speedSlider.highValue = 30;
-      
-        Vector3 rotation = launchingPad.transform.eulerAngles;     
-      
-        YSlider.value = rotation.y;
-        ZSlider.value = rotation.z;
-       
+    {
+        sliderBarrel.lowValue = 45f - 20f;     // 최초 45 
+        sliderBarrel.highValue = 45f + 20f;     //
+        sliderCannon.lowValue = 180 - 90f;      //
+        sliderCannon.highValue = 180 + 90f;      //
+        sliderBarrel.value = 45f;    // 최초의 각 
+        sliderCannon.value = 180f;   // 최초의 각
+                      
         speedSlider.value = projectileSO.Speed;
         massSlider.value = projectileSO.Mass;
     }
@@ -135,31 +117,18 @@ public class MyMainUI : MonoBehaviour
             drawBtn.style.backgroundColor = new StyleColor(Color.white);
             myProjectileLauncher.isDrawing = false;
         });
-
-
-
-
-
-
-
-
-
-
-        YSlider.RegisterValueChangedCallback(evt =>
+        //TODO ...
+        sliderBarrel.RegisterValueChangedCallback(evt =>
         {
-            Vector3 rotation = launchingPad.transform.eulerAngles;
-            projectileSO.AngleY = evt.newValue;
-            YSlider.label = string.Concat(evt.newValue.ToString(), " Angle");
+            Barrel.localRotation = Quaternion.Euler(0f, evt.newValue, 0f);
+        });
 
-            launchingPad.transform.rotation = Quaternion.Euler(rotation.x, evt.newValue, rotation.z);
-        });
-        ZSlider.RegisterValueChangedCallback(evt =>
+        sliderCannon.RegisterValueChangedCallback(evt =>
         {
-            Vector3 rotation = launchingPad.transform.eulerAngles;
-            projectileSO.AngleZ = evt.newValue;
-            ZSlider.label = string.Concat(evt.newValue.ToString(), " Angle");
-            launchingPad.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, evt.newValue);
+            Cannon.localRotation = Quaternion.Euler(0f, evt.newValue, 0f);
         });
+               
+        
         speedSlider.RegisterValueChangedCallback(evt =>
         {
             projectileSO.Speed = evt.newValue;
@@ -196,15 +165,8 @@ public class MyMainUI : MonoBehaviour
     public void OnStageClearEvent()
     {
 
-    }
-    void LockButtonAndSlider()
-    {
-        container.visible = true;
-    }
-    void UnLockButtonAndSlider()
-    {
-
-    }
+    }    
+    
     public void ShowPopup(List<string> texts)
     {
         var _popupContainer = UTIL.Create<VisualElement>("full-box");
@@ -246,4 +208,15 @@ public class MyMainUI : MonoBehaviour
 
     }
 
+    private void SetupElements()
+    {
+        sliderBarrel.lowValue = 45f - 20f;     // 최초 45 
+        sliderBarrel.highValue = 45f + 20f;     //
+        sliderCannon.lowValue = 180 - 90f;      //
+        sliderCannon.highValue = 180 + 90f;      //
+        sliderBarrel.value = 45f;    // 최초의 각 
+        sliderCannon.value = 180f;   // 최초의 각
+
+
+    }
 }
