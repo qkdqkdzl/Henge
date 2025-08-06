@@ -87,7 +87,7 @@ public class MyMainUI : MonoBehaviour
 
     private void Initialize()
     {
-        sliderBarrel.lowValue = 45f - 20f;     // 置段 45 
+        sliderBarrel.lowValue = 20f - 80f;     // 置段 45 
         sliderBarrel.highValue = 45f + 20f;     //
         sliderCannon.lowValue = 180 - 90f;      //
         sliderCannon.highValue = 180 + 90f;      //
@@ -155,6 +155,7 @@ public class MyMainUI : MonoBehaviour
 
     private void OnThrowButtonClick()
     {
+        Debug.Log("ddd");
         myProjectileLauncher.ThrowStone();        
         container.visible = false;
     }
