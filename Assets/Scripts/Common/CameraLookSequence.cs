@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CameraLookSequence : MonoBehaviour
 {
-    [SerializeField] WorldSpaceNameTag worldSpaceNameTag;
-  //  [SerializeField] CameraFollow cameraFollow;
+   
     [SerializeField] Transform[] targets;
 
     //TODO Áß¿ä 
@@ -27,8 +26,17 @@ public class CameraLookSequence : MonoBehaviour
     {
         CancellationToken token = cts.Token;
         isRunning = true;
-        CreateBillBoard();
+       
         StartCameraSequence(token);
+    }
+
+    // TODO.....
+    void OnApplicationQuit()
+    {
+        StopCameraWork();
+        // cts?.Dispose();
+        Debug.Log("Application is quitting or Play mode is stopping.");
+        // Your cleanup logic here
     }
 
 
@@ -36,13 +44,7 @@ public class CameraLookSequence : MonoBehaviour
     {
 
     }
-    private void CreateBillBoard()
-    {
-        foreach (Transform target in targets)
-        {
-            worldSpaceNameTag.CreateDisplay(target);
-        }
-    }
+   
 
     async void StartCameraSequence(CancellationToken token)
     {
