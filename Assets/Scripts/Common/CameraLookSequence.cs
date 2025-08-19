@@ -25,8 +25,7 @@ public class CameraLookSequence : MonoBehaviour
     public void Initialize()
     {
         CancellationToken token = cts.Token;
-        isRunning = true;
-       
+        isRunning = true;       
         StartCameraSequence(token);
     }
 
