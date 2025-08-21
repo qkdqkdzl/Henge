@@ -24,6 +24,8 @@ public class TargetStone : MonoBehaviour
     public static Action<float> OnHitDistanceEvent;
     public static Action<Vector3> OnHitContactEvent;
 
+    public static Action<Vector3> OnKnockDownToAnimalEvent;
+
     private void Start()
     {
         originalColor = objRenderer.material.color;

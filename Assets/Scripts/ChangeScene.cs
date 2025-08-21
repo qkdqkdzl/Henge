@@ -20,14 +20,12 @@ public class ChangeScene : MonoBehaviour
     //invoke È£ÃâÇÔ 
     void ShowButton()
     {
-
-        sequence.StopCameraWork();
-
         targetButton.gameObject.SetActive(true);
         
         targetButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Play");
+            sequence.StopCameraWork();
+            SceneManager.LoadScene("Play");            
         });
        
     }

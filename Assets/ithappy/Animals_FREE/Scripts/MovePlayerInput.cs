@@ -45,6 +45,23 @@ namespace Controller
             GatherInput();
             SetInput();
         }
+        public void GatherInputSample(Vector2 vec2, bool isrun, bool isjump, Vector3 target)
+        {
+            m_Axis = vec2;
+            m_IsRun = isrun;
+            m_IsJump = isjump;
+            // just forward
+            target.z = transform.position.z;
+            m_Target = target;
+            m_MouseDelta = new Vector2(Input.GetAxis(m_MouseX), Input.GetAxis(m_MouseY));
+            m_Scroll = Input.GetAxis(m_MouseScroll);
+        }
+
+        public void SetSpeed(Vector2 speed)
+        {
+            m_Mover.SetMovement(speed);
+        }
+
 
         public void GatherInput()
         {

@@ -10,8 +10,7 @@ public enum ItemTag
 }
 public class GameManager : MonoBehaviour
 {
-    public ProjectileSo projectileSO;
-    public ZombiSpawner zombiSpawner;
+    public ProjectileSo projectileSO;    
     public TargetStoneManager targetStoneManager;
     public MyMainUI mainUI;
 
@@ -23,9 +22,8 @@ public class GameManager : MonoBehaviour
         TargetStone.OnKnockDownEvent += TargetStone_OnKnockDownEvent;
         TargetStoneManager.OnStageClearEvent += OnStageClearEvent;
         FlyingStone.OnMissionComplete += FlyingStone_OnMissionComplete;
-
         targetStoneManager.CreateOneTargeStone();
-        zombiSpawner.SpawnZombi();
+        
 
     }
 

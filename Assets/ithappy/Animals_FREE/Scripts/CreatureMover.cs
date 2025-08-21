@@ -64,6 +64,13 @@ namespace Controller
             m_Animation = new AnimationHandler(m_Animator, m_VerticalID, m_StateID);
         }
 
+        public void SetMovement(Vector2 vector2)
+        {
+            m_WalkSpeed += vector2.x;
+            m_RunSpeed += vector2.y;
+            m_Movement?.SetStats(m_WalkSpeed / 3.6f, m_RunSpeed / 3.6f, m_RotateSpeed, m_JumpHeight, m_Space);
+        }
+
         private void Update()
         {
             m_Movement.Move(Time.deltaTime, in m_Axis, in m_Target, m_IsRun, m_IsMoving, out var animAxis, out var isAir);
@@ -100,6 +107,8 @@ namespace Controller
                 m_Movement.SetSurface(hit.normal);
             }
         }
+
+        
 
         [Serializable]
         private struct LookWeight
