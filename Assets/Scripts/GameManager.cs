@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public MyMainUI MymainUI;
     public CameraFollow cameraFollow;
 
+    
+
     private void OnEnable()
     {
         TargetStone.OnKnockDownEvent += TargetStone_OnKnockDownEvent;
