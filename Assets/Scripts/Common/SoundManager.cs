@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -48,5 +49,10 @@ public class SoundManager : MonoBehaviour
     {
         if (index < 0 || index >= soundEffects.Length) return;
         PlaySFX(soundEffects[index]);
+    }
+
+    public void PlayingRunningSound()
+    {
+        
     }
 }

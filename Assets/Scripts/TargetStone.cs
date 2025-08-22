@@ -11,9 +11,10 @@ public enum StoneType
 public class TargetStone : MonoBehaviour
 {
     public static event Action<StoneType> OnHitByProjectile;
-    public static event Action<StoneType> OnKnockDownEvent;
+    public static event Action<StoneType> OnKnockDownEvent;  
     public static event Action<Vector3> OnKnockDownToZombiEvent;
     
+
     public StoneType stoneType;
     public Renderer objRenderer;
 
@@ -23,7 +24,6 @@ public class TargetStone : MonoBehaviour
 
     public static Action<float> OnHitDistanceEvent;
     public static Action<Vector3> OnHitContactEvent;
-
     public static Action<Vector3> OnKnockDownToAnimalEvent;
 
     private void Start()

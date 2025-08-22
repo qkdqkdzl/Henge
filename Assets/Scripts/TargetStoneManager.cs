@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class TargetStoneManager : MonoBehaviour
 {
-    public static event Action OnStageClearEvent;
+    public  event Action OnStageClearEvent;
+    
     public GameObject stonePrefab;
     public float minX, maxX;
     public float minZ, maxZ;
@@ -72,6 +73,7 @@ public class TargetStoneManager : MonoBehaviour
         minZ -= 0.1f;
         maxZ += 0.1f;
     }
+
 
 
 #if (UNITY_EDITOR)

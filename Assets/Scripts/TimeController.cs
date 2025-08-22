@@ -15,6 +15,12 @@ public class TimeController : MonoBehaviour
         originalFixedDeltaTime = Time.fixedDeltaTime;
     }
 
+    public void OnReset()
+    {
+        StopAllCoroutines();
+        Time.timeScale = originalTimeScale;
+        Time.fixedDeltaTime = originalFixedDeltaTime;
+    }
     public void TriggerSlowMotion()
     {
         StartCoroutine(SlowMotionCoroutine());
@@ -31,3 +37,4 @@ public class TimeController : MonoBehaviour
         Time.fixedDeltaTime = originalFixedDeltaTime;
     }
 }
+

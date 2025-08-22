@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class RaycastDrawer : MonoBehaviour
 {
-    public static event Action OnRayCastHitZombiEvent;
+    public bool isHasHit;
+    public event Action OnRayCastHitAnimalEvent;
+    public event Action OnRayCastHitZombiEvent;
     void Update()
     {
         Vector3 origin = transform.position;
